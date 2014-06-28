@@ -1,0 +1,26 @@
+%clearfix {
+    *zoom: 1;
+    &:before,
+    &:after {
+        display: table;
+        content: "";
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+// Mixins
+@mixin box-sizing($value) {
+    -webkit-box-sizing:$value;
+       -moz-box-sizing:$value;
+        -ms-box-sizing:$value;
+         -o-box-sizing:$value;
+            box-sizing:$value;
+}
+
+@mixin arrow-left($size,$color) {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right:$size solid $color;
+}

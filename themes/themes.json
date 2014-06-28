@@ -1,0 +1,9 @@
+{
+    "6up": {
+        "css": ["media/6up.css"],
+        "partials": {
+            "videos": "videos.mustache"
+        },
+        "tmpl": "6up.mustache"
+    }
+}

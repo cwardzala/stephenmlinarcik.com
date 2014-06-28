@@ -1,0 +1,90 @@
+<div id="vimeography-gallery-{{gallery_id}}" class="vimeography-6up" data-version="{{version}}"{{#gallery_width}} style="max-width: {{gallery_width}};"{{/gallery_width}}>
+	<div class="vimeography-main">
+		<div class="vimeography-slides">
+			{{> videos}}
+		</div>
+	</div>
+
+	<div class="vimeography-thumbnails">
+		{{#videos}}
+			<img src="{{thumbnail_medium}}" alt="{{name}}" />
+		{{/videos}}
+	</div>
+
+	<div class="clearfix"></div>
+
+</div> <!-- End Gallery -->
+
+<script charset="utf-8" type="text/javascript">
+(function($){
+	$(document).ready(function(){
+
+		// Listen for the ready event for any vimeo video players on the page
+		var players = $('#vimeography-gallery-{{gallery_id}} iframe');
+		$.each(players, function(i, player) {
+			$f(player).addEvent('ready', ready);
+		});
+
+		/**
+		* Utility function for adding an event. Handles the inconsistencies
+		* between the W3C method for adding events (addEventListener) and
+		* IE's (attachEvent).
+		*/
+		function addEvent(element, eventName, callback)
+		{
+			if (element.addEventListener)
+			{
+				element.addEventListener(eventName, callback, false)
+			}
+			else
+			{
+				element.attachEvent(eventName, callback, false);
+			}
+		}
+
+		function ready(player_id)
+		{
+			var froogaloop = $f(player_id);
+			froogaloop.addEvent('play', function(data)
+			{
+				$('#vimeography-gallery-{{gallery_id}} .vimeography-main').flexslider("pause");
+			});
+
+			froogaloop.addEvent('pause', function(data)
+			{
+				//$('#vimeography-gallery-{{gallery_id}} .flexslider').flexslider("play");
+			});
+		}
+
+		$('#vimeography-gallery-{{gallery_id}}').fitVids();
+
+		$('#vimeography-gallery-{{gallery_id}} .vimeography-main').flexslider({
+			animation: "slide",
+			selector: '.vimeography-slides > .vimeography-slide',
+			controlNav: true,
+			manualControls: '#vimeography-gallery-{{gallery_id}} .vimeography-thumbnails img',
+			animationLoop: true,
+			slideshow: true,
+			itemWidth: 640,
+			itemMargin: 0,
+			maxItems: 1,
+			minItems: 1,
+			useCSS: false,
+			before: function(slider)
+			{
+		        /*$.each(players, function(i, player) {
+					$f(player).api('pause');
+		        });*/
+			}
+		});
+
+		$('#vimeography-gallery-{{gallery_id}} .vimeography-thumbnails img:lt(2)').css('marginTop', '0');
+
+		$('#vimeography-gallery-{{gallery_id}} .vimeography-thumbnails img').click(function(){
+			$.each(players, function(i, player) {
+				$f(player).api('pause');
+			});
+		});
+
+	});
+}(jQuery))</script>
