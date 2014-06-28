@@ -1,0 +1,4 @@
+1. if adding images resize original images to be no taller than 422px (height)
+    - If images are bigger than 422px bad things will happen to scrolling.
+2. log into ftp.stephenmlinarcik.com your FTP client of choice (Transmit, Cyberduck, etc...)
+3. add or remove images from images/gallery/

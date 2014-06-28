@@ -9,4 +9,31 @@
 <script src="/js/jquery.fitvids.js"></script>
 <script src="/js/mustache.js"></script>
 <script src="/js/vimeography.js"></script>
-<script src="/js/app.js"></script>
+<script>
+    $(function () {
+        var $imgScroller = $('.img-scroller'),
+            $track = $imgScroller.find('.img-scroller-track'),
+            $images = $imgScroller.find('img'),
+            width = 0,
+            openClosePanel;
+
+        openClosePanel = function (index) {
+            $('.audio-section.open').removeClass('open');
+            $('.audio-section').eq(index).addClass('open');
+        };
+
+        $images.each(function () {
+            width = width + ($(this).outerWidth(true) + 2);
+        });
+
+        $('.audio-nav ul li a').each(function (i,node) {
+            $(this).click(function (event) {
+                event.preventDefault();
+                openClosePanel(i);
+            })
+        });
+
+        $track.width(width);
+        $imgScroller.jScrollPane();
+    });
+</script>
