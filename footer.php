@@ -22,8 +22,19 @@
             $('.audio-section').eq(index).addClass('open');
         };
 
-        $images.each(function () {
-            width = width + ($(this).outerWidth(true) + 2);
+        $images.each(function (i) {
+            var $img = $(this),
+                src = $img.data('src');
+            $img.on('load', function () {
+                width = width + ($(this).outerWidth(true) + 2);
+                //console.debug([i, $images.length -1]);
+                if (i === ($images.length - 1)) {
+                    //console.debug('last');
+                    $track.width(width);
+                    $imgScroller.jScrollPane();
+                }
+            });
+            $img.attr('src', src);
         });
 
         $('.audio-nav ul li a').each(function (i,node) {
@@ -32,8 +43,5 @@
                 openClosePanel(i);
             })
         });
-
-        $track.width(width);
-        $imgScroller.jScrollPane();
     });
 </script>

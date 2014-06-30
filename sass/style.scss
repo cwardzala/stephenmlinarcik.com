@@ -235,6 +235,7 @@ a {
 }
 .img-scroller-track {
     @extend %clearfix;
+    width: 20000px;
 }
 
 .img-scroller img {

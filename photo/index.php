@@ -1,3 +1,15 @@
+<?php
+    $dir = $_SERVER["DOCUMENT_ROOT"] . '/images/gallery';
+    $handle = opendir($dir);
+    $images = array();
+    while ($entry = readdir($handle)) {
+        if ($entry != "." && $entry != ".." && $entry != '.DS_Store') {
+            $images[] = $entry;
+        }
+    }
+    sort($images);
+    closedir($handle);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,14 +21,9 @@
             <div id="primary" class="post">
                 <div class="img-scroller horizontal-only">
                     <div class="img-scroller-track">
-                    <?php if ($handle = opendir('../images/gallery')): ?>
-                        <?php while (false !== ($entry = readdir($handle))): ?>
-                            <?php if ($entry != "." && $entry != ".." && $entry != '.DS_Store'): ?>
-                                <img src="/images/gallery/<?php echo $entry ?>">
-                            <?php endif; ?>
-                        <?php endwhile; ?>
-                        <?php closedir($handle); ?>
-                    <?php endif; ?>
+                        <?php foreach($images as $image): ?>
+                            <img data-src="/images/gallery/<?php echo $image ?>">
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
