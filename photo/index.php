@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php $title = "smlinarcik » video"; include('../head.php'); ?>
+        <?php $title = "photo"; include('../head.php'); ?>
     </head>
     <body>
         <div class="container">

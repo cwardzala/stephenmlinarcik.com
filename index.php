@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php $title = "smlinarcik » video"; include('head.php'); ?>
+        <?php $title = "video"; include('head.php'); ?>
     </head>
     <body>
         <div class="container">
