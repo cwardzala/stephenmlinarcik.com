@@ -1,7 +1,7 @@
 // Variables
 $black: #000;
 $white: #fff;
-$sideBarBackground: #b9b7b7;
+$sideBarBackground: #d96d75;
 $gray: #ccc;
 
 @import 'normalize';
@@ -37,6 +37,15 @@ a {
     color:$gray;
     clear:both;
     text-align:right;
+
+    .mark {
+        display: inline-block;
+        color: black;
+        vertical-align: baseline;
+        font-size: 34px;
+        margin: 0 3px;
+        color: $sideBarBackground;
+    }
 }
 #secondary {
     float:left;
@@ -49,6 +58,10 @@ a {
     padding:18px;
 
     position:relative;
+
+    a {
+        color:$white;
+    }
     h1 {
         margin:0;
         line-height:1;
@@ -70,7 +83,7 @@ a {
         font-size:25px;
     }
     li, a {
-        color:$gray;
+        color:$sideBarBackground;
         display:inline-block;
     }
     a:hover {
@@ -127,9 +140,13 @@ a {
             color:$black;
             line-height:1;
             margin:6px 0;
-            a {color:$black;}
+            a {color:$white;}
         }
     }
+}
+
+.audio-nav ul li a {
+    color: $black;
 }
 
 [class*="vimeography-"] {
@@ -191,6 +208,9 @@ a {
         display:block;
         float:left;
         margin:14px 26px 14px 0;
+        &:last-child {
+            margin-right: 0;
+        }
     }
 }
 
@@ -204,8 +224,9 @@ a {
 
 .banner {
   padding: 1em;
-  background: #B9B7B7;
+  background: $sideBarBackground;
   overflow:hidden;
+  color: $white;
 }
 .banner p {
   margin:0;

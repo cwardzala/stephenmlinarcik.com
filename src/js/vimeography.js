@@ -5,32 +5,32 @@
 
     var loadTemplate = function (template) {
             var tmpl = '';
-            $.ajax({
+            return $.ajax({
                 url: template,
                 type: 'get',
-                async: false,
                 dataType: 'text'
-            }).done(function (data) {
-                tmpl = data;
             });
-            return tmpl;
         },
 
         loadPartials = function (theme, partials) {
             var parts = {},
-                partialsDir = themesDir + '/vimeography-' + theme + '/partials/';
-            $.each(partials, function (key, value) {
-                parts[key] = loadTemplate(partialsDir + value);
+                partialsDir = themesDir + '/vimeography-' + theme + '/partials/',
+                def = $.Deferred();
+
+            var value = partials.videos;
+            loadTemplate(partialsDir + value).done(function (data) {
+                parts.videos = data;
+                def.resolve(parts);
             });
-            return parts;
+            return def;
         },
 
         loadVideos = function (channel) {
-            var vids = [];
+            var vids = [],
+                def = $.Deferred();
             $.ajax({
                 url: 'http://vimeo.com/api/v2/channel/' + channel + '/videos.json',
                 type: 'get',
-                async: false,
                 dataType: 'json'
             }).done(function (data) {
                 $.each(data, function (i, item) {
@@ -45,8 +45,9 @@
                         });
                     }
                 });
+                def.resolve(vids);
             });
-            return vids;
+            return def;
         };
 
     // Get themes json
@@ -62,16 +63,19 @@
                 partials,
                 videos;
 
-            mainTmpl = loadTemplate(themeDir + '/' + theme + '.mustache');
-            partials = loadPartials(theme, themesData[theme].partials);
-            videos = loadVideos(channel);
-
-            var html = Mustache.render(mainTmpl, {
-                gallery_id: i,
-                version: version,
-                videos: videos
-            }, partials);
-            $_this.html(html);
+            loadTemplate(themeDir + '/' + theme + '.mustache').done(function (mainTmpl) {
+                loadPartials(theme, themesData[theme].partials).done(function (partData) {
+                    partials = partData;
+                    loadVideos(channel).done(function (videos) {
+                        var html = Mustache.render(mainTmpl, {
+                            gallery_id: i,
+                            version: version,
+                            videos: videos
+                        }, partials);
+                        $_this.html(html);
+                    });
+                });
+            });
         });
     });
 

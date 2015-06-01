@@ -1,7 +1,7 @@
 <?php date_default_timezone_set('America/New_York'); ?>
-<footer class="site-footer">COPYRIGHT <?php echo date('Y'); ?> STEPHEN MLINARCIK | ALL RIGHTS RESERVED <img src="/images/balls.png"></footer>
+<footer class="site-footer">COPYRIGHT <?php echo date('Y'); ?> STEPHEN MLINARCIK | ALL RIGHTS RESERVED <h4 class="mark">sm</h4></footer>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
 <script src="/js/jquery.flexslider-min.js"></script>
 <script src="/js/jquery.mousewheel.js"></script>
@@ -20,6 +20,12 @@
         openClosePanel = function (index) {
             $('.audio-section.open').removeClass('open');
             $('.audio-section').eq(index).addClass('open');
+            $('.audio-section').eq(index).find('iframe').each(function () {
+                if (!$(this).hasClass('loaded')) {
+                    $(this).attr('src', $(this).attr('src'));
+                    $(this).addClass('loaded');
+                }
+            });
         };
 
         $images.each(function (i) {
