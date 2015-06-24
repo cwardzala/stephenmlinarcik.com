@@ -10,8 +10,6 @@ $gray: #ccc;
         'mods/icons',
         'mods/jscrollpane';
 
-
-
 body, input, textarea {
     color: #373737;
     font: 15px Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -39,12 +37,12 @@ a {
     text-align:right;
 
     .mark {
-        display: inline-block;
-        color: black;
-        vertical-align: baseline;
-        font-size: 34px;
+        line-height: 1em;
+        height: 1em;
+        width: 1em;
+        display:inline-block;
         margin: 0 3px;
-        color: $sideBarBackground;
+        background-color: $sideBarBackground;
     }
 }
 #secondary {

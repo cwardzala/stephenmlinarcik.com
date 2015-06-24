@@ -17,8 +17,8 @@
                     <p>Mildly introverted. Feeling. Perceiving. Director. Editor. Human.</p>
                     <p>I tell stories, write music, bend rules like beziers while rolling shutters, prodding pixels, and splicing scenes to their desired effect.  Story is king, collaboration is key. 
                     <br>A B C, 1 2 3, baby you and me.</p>
-                    <p>Brooklyn, NY / Earth</p>
-                    <p>All Music Videos &amp; Weddings are custom by nature, because you're worth it.
+                    <p>New York, NY / Earth</p>
+                    <p>All projects are custom by nature, because you're worth it.
                     Contact me for pricing.</p>
                 </div>
             </div>

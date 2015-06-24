@@ -1,5 +1,5 @@
 <?php date_default_timezone_set('America/New_York'); ?>
-<footer class="site-footer">COPYRIGHT <?php echo date('Y'); ?> STEPHEN MLINARCIK | ALL RIGHTS RESERVED <h4 class="mark">sm</h4></footer>
+<footer class="site-footer">COPYRIGHT <?php echo date('Y'); ?> STEPHEN MLINARCIK | ALL RIGHTS RESERVED <span class="mark"></span></footer>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
