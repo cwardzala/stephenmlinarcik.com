@@ -1,5 +1,9 @@
 <?php
-    require_once 'functions.php';
+    function isActive($route) {
+        if ($_SERVER["REQUEST_URI"] == $route) {
+            return 'current_page_item';
+        }
+    }
 ?>
 
 <div id="secondary" class="widget-area" role="complementary">
@@ -58,6 +62,6 @@
             </li>
 
         </ul>
-        <p><a target="_blank" href="https://dl.dropbox.com/u/9677299/smlinarcik_resume2012_white.pdf">resumé</a></p>
+        <p><a target="_blank" href="https://dl.dropboxusercontent.com/u/9677299/smlinarcik_resume_2016.pdf">resumé</a></p>
     </div>
 </div>

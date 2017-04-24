@@ -7,7 +7,7 @@
         <div class="container">
             <?php include('../sidebar.php'); ?>
             <div id="primary" class="post">
-                <div><img src="/images/stephen01.jpg" width="243" height="243" class="pull-left" /></div>
+                <div><img src="/images/smlinarcik_2016.jpg" width="243" height="243" class="pull-left" /></div>
                 <div class="about-content">
                     <div class="banner">
                         <p>"This is me!  The back of my head!  What's this for?”</p>
