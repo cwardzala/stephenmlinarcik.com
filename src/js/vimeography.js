@@ -29,7 +29,7 @@
             var vids = [],
                 def = $.Deferred();
             $.ajax({
-                url: 'http://vimeo.com/api/v2/channel/' + channel + '/videos.json',
+                url: 'https://vimeo.com/api/v2/channel/' + channel + '/videos.json',
                 type: 'get',
                 dataType: 'json'
             }).done(function (data) {
